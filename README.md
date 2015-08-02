@@ -17,7 +17,7 @@ Access to these events is enabled with listeners
 
 <h3>Last release</h3>
 
-[Droid phone event library](http://akinaru.github.io/droid-phone-event/releases/)
+[Droid phone event library](releases/)
 
 <h3>Project structure</h3>
 
