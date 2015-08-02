@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DroidPhoneEvent.iml" filepath="$PROJECT_DIR$/DroidPhoneEvent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/phone-event-app/phone-event-app.iml" filepath="$PROJECT_DIR$/phone-event-app/phone-event-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/phone-event-lib/phone-event-lib.iml" filepath="$PROJECT_DIR$/phone-event-lib/phone-event-lib.iml" />
+    </modules>
+  </component>
+</project>
