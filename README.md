@@ -15,6 +15,21 @@ Access to these events is enabled with listeners
 
 <hr/>
 
+<h3>Last release</h3>
+
+[Droid phone event library](http://akinaru.github.io/droid-phone-event/releases/)
+
+<h3>Project structure</h3>
+
+* phone-event-app : testing application
+* phone-event-lib : library
+
+can be built on Android Studio
+
+<hr/>
+
+<h2>How to use ? </h2>
+
 First initialize DroidEvent object with your application context :
 
 ```
@@ -154,5 +169,3 @@ droidEvent.addScreenStateListener(new IScreenStateListener() {
 
 Tested on :
 * Galaxy S4 (4.4)
-
-Build with Android Studio
