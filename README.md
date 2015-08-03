@@ -165,6 +165,21 @@ droidEvent.addScreenStateListener(new IScreenStateListener() {
     }
 });
 ```
+
+<h3>close all listeners / unregister library objects</h3>
+
+In your onDestroy() you have to call the close() method
+```
+@Override
+public void onDestroy() {
+	super.onDestroy();
+	droidEvent.close();
+}
+```
+
+You can remove a single listener : ``droidEvent.removeListeners(listener)``
+Or remove all listener you have created :  ``droidEvent.removeAllListeners()``
+
 <hr/>
 
 Tested on :
