@@ -178,6 +178,7 @@ public void onDestroy() {
 ```
 
 You can remove a single listener : ``droidEvent.removeListeners(listener)``
+
 Or remove all listener you have created :  ``droidEvent.removeAllListeners()``
 
 <hr/>
