@@ -21,8 +21,6 @@ public class DroidEventActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.i(TAG, "onCreate()");
-
         droidEvent = new DroidEvent(this);
 
         droidEvent.addSystemVolumeListener(new IVolumeListener() {
@@ -93,6 +91,15 @@ public class DroidEventActivity extends Activity {
                 Log.i(TAG, "[OFF HOOK]");
             }
         });
+
+        Log.i(TAG, "Current states");
+        Log.i(TAG, "Media volume        : " + droidEvent.getMediaVolume());
+        Log.i(TAG, "System volume       : " + droidEvent.getSystemVolume());
+        Log.i(TAG, "Ring volume         : " + droidEvent.getRingVolume());
+        Log.i(TAG, "Notification volume : " + droidEvent.getNotificationVolume());
+        Log.i(TAG, "DTMF volume         : " + droidEvent.getDtmfVolume());
+        Log.i(TAG, "Voice call volume   : " + droidEvent.getVoiceCallVolume());
+        Log.i(TAG, "Screen state        : " + droidEvent.getScreenState());
     }
 
     @Override
