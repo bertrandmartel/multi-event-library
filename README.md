@@ -13,6 +13,7 @@ Easily catch a range of event type on Android devices :
 
 Access to these events is enabled with listeners
 
+You can also access current value for specific properties :
 * access current value for volume media / System / Ring / DTMF / Voice call / Notification
 * access current screen state value
 
