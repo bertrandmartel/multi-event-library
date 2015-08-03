@@ -5,13 +5,16 @@ http://akinaru.github.io/droid-phone-event/
 <i>Update 03/08/2015</i>
 
 Easily catch a range of event type on Android devices :
-* Volume level change event for Audio / System / Ring / DTMF / Voice call / Notification
+* Volume level change event for Media / System / Ring / DTMF / Voice call / Notification
 * SMS reception event
 * Incoming phone call event
 * phone hook-off event
 * screen state change event (screen on/off) 
 
 Access to these events is enabled with listeners
+
+* access current value for volume media / System / Ring / DTMF / Voice call / Notification
+* access current screen state value
 
 <hr/>
 
@@ -165,7 +168,6 @@ droidEvent.addScreenStateListener(new IScreenStateListener() {
     }
 });
 ```
-
 <h3>close all listeners / unregister library objects</h3>
 
 In your onDestroy() you have to call the close() method
@@ -180,6 +182,29 @@ public void onDestroy() {
 You can remove a single listener : ``droidEvent.removeListeners(listener)``
 
 Or remove all listener you have created :  ``droidEvent.removeAllListeners()``
+
+<hr/>
+
+<h3>Access raw value directly</h3>
+
+You may want to have raw value at a precise time. 
+
+You can access all volume state type value :
+
+```
+Log.i(TAG, "Media volume        : " + droidEvent.getMediaVolume());
+Log.i(TAG, "System volume       : " + droidEvent.getSystemVolume());
+Log.i(TAG, "Ring volume         : " + droidEvent.getRingVolume());
+Log.i(TAG, "Notification volume : " + droidEvent.getNotificationVolume());
+Log.i(TAG, "DTMF volume         : " + droidEvent.getDtmfVolume());
+Log.i(TAG, "Voice call volume   : " + droidEvent.getVoiceCallVolume());
+```
+
+You can access screen state value :
+
+```
+Log.i(TAG, "Screen state        : " + droidEvent.getScreenState());
+```
 
 <hr/>
 

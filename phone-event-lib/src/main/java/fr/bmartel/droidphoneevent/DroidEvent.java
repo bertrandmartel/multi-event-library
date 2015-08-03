@@ -3,7 +3,9 @@ package fr.bmartel.droidphoneevent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -41,8 +43,18 @@ public class DroidEvent {
 
     private SettingsObserver audioObserver = null;
     private EventReceiver eventReceiver = null;
+    private AudioManager audioManager = null;
+    private PowerManager powerManager = null;
 
     public DroidEvent(Context context) {
+
+        audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (audioManager == null)
+            Log.e(TAG, "Error audio manager is null");
+
+        powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        if (powerManager == null)
+            Log.e(TAG, "Error power manager is null");
 
         if (context != null) {
             this.context = context;
@@ -178,4 +190,55 @@ public class DroidEvent {
     public List<ISmsListener> getSmsListenerList() {
         return smsListenerList;
     }
+
+
+    public byte getMediaVolume() {
+        if (audioManager != null)
+            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        else
+            return 0;
+    }
+
+    public byte getSystemVolume() {
+        if (audioManager != null)
+            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_SYSTEM);
+        else
+            return 0;
+    }
+
+    public byte getRingVolume() {
+        if (audioManager != null)
+            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_RING);
+        else
+            return 0;
+    }
+
+    public byte getNotificationVolume() {
+        if (audioManager != null)
+            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
+        else
+            return 0;
+    }
+
+    public byte getVoiceCallVolume() {
+        if (audioManager != null)
+            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
+        else
+            return 0;
+    }
+
+    public byte getDtmfVolume() {
+        if (audioManager != null)
+            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_DTMF);
+        else
+            return 0;
+    }
+
+    public boolean getScreenState() {
+        if (powerManager != null)
+            return powerManager.isScreenOn();
+        else
+            return false;
+    }
+
 }
