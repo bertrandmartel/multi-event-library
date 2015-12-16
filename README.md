@@ -6,7 +6,7 @@
 
 <hr/>
 
-Small Android library to catch a range of event type on Android devices :
+Small Android library to catch a range of event type on Android devices via listeners :
 
 * Volume level change event for Media / System / Ring / DTMF / Voice call / Notification
 * SMS reception event
@@ -16,14 +16,12 @@ Small Android library to catch a range of event type on Android devices :
 * Wifi connection change event
 * Ethernet connection change event (for Android box)
 
-Access to these events is enabled with listeners
-
 You can also access current value for specific properties :
 
-* access current value for volume media / System / Ring / DTMF / Voice call / Notification
-* access current screen state value
-* access curent wifi state value
-* access current ethernet state value
+* current value for volume media / System / Ring / DTMF / Voice call / Notification
+* current screen state value
+* curent wifi state value
+* current ethernet state value
 
 ## Include in your project
 
@@ -34,7 +32,7 @@ come later
 First initialize `MultiEvent` object with your application context :
 
 ```
-import fr.bmartel.droidphoneevent.MultiEvent;
+import fr.bmartel.android.multievent.MultiEvent;
 
 .......
 
@@ -121,12 +119,12 @@ eventManager.addVoiceCallVolumeListener(new IVolumeListener() {
 });
 ```
 
-With respective import : ``import fr.bmartel.droidphoneevent.listener.IVolumeListener;``
+With respective import : ``import fr.bmartel.android.multievent.listener.IVolumeListener;``
 
 ## SMS reception
 
 ```
-import fr.bmartel.droidphoneevent.listener.ISmsListener;
+import fr.bmartel.android.multievent.listener.ISmsListener;
 
 .......
 
@@ -141,7 +139,7 @@ eventManager.addSmsListener(new ISmsListener() {
 ## Incoming call/hook-off
 
 ```
-import fr.bmartel.droidphoneevent.listener.IPhoneCallListener;
+import fr.bmartel.android.multievent.listener.IPhoneCallListener;
 
 .......
 
@@ -158,10 +156,10 @@ eventManager.addPhoneCallListener(new IPhoneCallListener() {
 });
 ```
 
-## screen state
+## Screen state
 
 ```
-import fr.bmartel.droidphoneevent.listener.IScreenStateListener;
+import fr.bmartel.android.multievent.listener.IScreenStateListener;
 
 .......
 
@@ -181,7 +179,7 @@ eventManager.addScreenStateListener(new IScreenStateListener() {
 ## Connectivity state
 
 ```
-import fr.bmartel.droidphoneevent.listener.IConnectivityListener;
+import fr.bmartel.android.multievent.listener.IConnectivityListener;
 
 .......
 
@@ -199,7 +197,7 @@ eventManager.addConnectivityChangeListener(new IConnectivityListener() {
 });
 ```
 
-## close all listeners / unregister receivers
+## Close all listeners / unregister receivers
 
 In your onDestroy() you have to call the close() method
 ```
