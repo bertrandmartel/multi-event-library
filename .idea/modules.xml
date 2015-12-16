@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DroidPhoneEvent.iml" filepath="$PROJECT_DIR$/DroidPhoneEvent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/phone-event-app/phone-event-app.iml" filepath="$PROJECT_DIR$/phone-event-app/phone-event-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/phone-event-lib/phone-event-lib.iml" filepath="$PROJECT_DIR$/phone-event-lib/phone-event-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/droid-phone-event.iml" filepath="$PROJECT_DIR$/droid-phone-event.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multi-event-app/multi-event-app.iml" filepath="$PROJECT_DIR$/multi-event-app/multi-event-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multi-event-lib/multi-event-lib.iml" filepath="$PROJECT_DIR$/multi-event-lib/multi-event-lib.iml" />
     </modules>
   </component>
 </project>
