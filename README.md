@@ -1,56 +1,64 @@
-# Droid Phone Event library #
+# Multi Event library #
 
-http://akinaru.github.io/droid-phone-event/
+[![Build Status](https://travis-ci.org/akinaru/multi-event-library.svg)](https://travis-ci.org/akinaru/multi-event-library)
+[![Download](https://api.bintray.com/packages/akinaru/maven/multi-event-library/images/download.svg) ](https://bintray.com/akinaru/maven/multi-event-library/_latestVersion)
+[![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
-<i>Update 03/08/2015</i>
+<hr/>
 
-Easily catch a range of event type on Android devices :
+Small Android library to catch a range of event type on Android devices :
+
 * Volume level change event for Media / System / Ring / DTMF / Voice call / Notification
 * SMS reception event
 * Incoming phone call event
 * phone hook-off event
 * screen state change event (screen on/off) 
+* Wifi connection change event
+* Ethernet connection change event (for Android box)
 
 Access to these events is enabled with listeners
 
 You can also access current value for specific properties :
+
 * access current value for volume media / System / Ring / DTMF / Voice call / Notification
 * access current screen state value
+* access curent wifi state value
+* access current ethernet state value
 
-<hr/>
+## Include in your project
 
-<h3>Last release</h3>
+come later
 
-[Droid phone event library](https://github.com/akinaru/droid-phone-event/releases/)
+## How to use ?
 
-<h3>Project structure</h3>
-
-* phone-event-app : testing application
-* phone-event-lib : library
-
-can be built on Android Studio
-
-<hr/>
-
-<h2>How to use ? </h2>
-
-First initialize DroidEvent object with your application context :
+First initialize `MultiEvent` object with your application context :
 
 ```
-import fr.bmartel.droidphoneevent.DroidEvent;
+import fr.bmartel.droidphoneevent.MultiEvent;
 
 .......
 
-droidEvent = new DroidEvent(this);
-
+MultiEvent eventManager = new MultiEvent(context);
 ```
 
-<h3>Volume level event listener</h3>
+## Android permissions
 
-* System volume change listener
+According to which event you want to track, you may need some Android permissions :
+
+| Event Type                                                            |    Permission                |
+|------------------------------------------------------------------------|----------------------------|
+| Incoming phone call                        | `<uses-permission android:name="android.permission.READ_PHONE_STATE"/>`  |
+| SMS reception event                        | `<uses-permission android:name="android.permission.RECEIVE_SMS"/>`  |
+| phone hook-off                             | `<uses-permission android:name="android.permission.READ_PHONE_STATE"/>`  |
+| Wifi / Ethernet connection change          | `<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>`           |
+| Volume level change event                  |      |
+
+## Volume level event listener
+
+### System volume
 
 ```
-droidEvent.addSystemVolumeListener(new IVolumeListener() {
+eventManager.addSystemVolumeListener(new IVolumeListener() {
     @Override
     public void onVolume(byte oldVolume, byte newVolume) {
         Log.i(TAG, "[VOLUME SYSTEM] old volume : " + oldVolume + " | " + "new volume : " + newVolume);
@@ -58,10 +66,10 @@ droidEvent.addSystemVolumeListener(new IVolumeListener() {
 });
 ```
 
-* Media volume change listener
+### Media volume
 
 ```
-droidEvent.addMediaVolumeListener(new IVolumeListener() {
+eventManager.addMediaVolumeListener(new IVolumeListener() {
     @Override
     public void onVolume(byte oldVolume, byte newVolume) {
         Log.i(TAG, "[VOLUME MEDIA] old volume : " + oldVolume + " | " + "new volume : " + newVolume);
@@ -69,10 +77,10 @@ droidEvent.addMediaVolumeListener(new IVolumeListener() {
 });
 ```
 
-* DTMF volume change listener
+### DTMF volume
 
 ```
-droidEvent.addDtmfVolumeListener(new IVolumeListener() {
+eventManager.addDtmfVolumeListener(new IVolumeListener() {
     @Override
     public void onVolume(byte oldVolume, byte newVolume) {
         Log.i(TAG, "[VOLUME DTMF] old volume : " + oldVolume + " | " + "new volume : " + newVolume);
@@ -80,10 +88,10 @@ droidEvent.addDtmfVolumeListener(new IVolumeListener() {
 });
 ```
 
-* Notification volume change listener
+### Notification volume
 
 ```
-droidEvent.addNotificationVolumeListener(new IVolumeListener() {
+eventManager.addNotificationVolumeListener(new IVolumeListener() {
 	@Override
 	public void onVolume(byte oldVolume, byte newVolume) {
 	    Log.i(TAG, "[VOLUME NOTIF] old volume : " + oldVolume + " | " + "new volume : " + newVolume);
@@ -91,10 +99,10 @@ droidEvent.addNotificationVolumeListener(new IVolumeListener() {
 });
 ```
 
-* Ring volume change listener
+### Ring volume
 
 ```
-droidEvent.addRingVolumeListener(new IVolumeListener() {
+eventManager.addRingVolumeListener(new IVolumeListener() {
 	@Override
 	public void onVolume(byte oldVolume, byte newVolume) {
 	    Log.i(TAG, "[VOLUME RING] old volume : " + oldVolume + " | " + "new volume : " + newVolume);
@@ -102,10 +110,10 @@ droidEvent.addRingVolumeListener(new IVolumeListener() {
 });
 ```
 
-* Voice call volume change listener
+### Voice call volume
 
 ```
-droidEvent.addVoiceCallVolumeListener(new IVolumeListener() {
+eventManager.addVoiceCallVolumeListener(new IVolumeListener() {
 	@Override
 	public void onVolume(byte oldVolume, byte newVolume) {
 	    Log.i(TAG, "[VOLUME VOICE CALL] old volume : " + oldVolume + " | " + "new volume : " + newVolume);
@@ -115,14 +123,14 @@ droidEvent.addVoiceCallVolumeListener(new IVolumeListener() {
 
 With respective import : ``import fr.bmartel.droidphoneevent.listener.IVolumeListener;``
 
-<h3>SMS reception event listener</h3>
+## SMS reception
 
 ```
 import fr.bmartel.droidphoneevent.listener.ISmsListener;
 
 .......
 
-droidEvent.addSmsListener(new ISmsListener() {
+eventManager.addSmsListener(new ISmsListener() {
 	@Override
 	public void onSmsReceived() {
 	    Log.i(TAG, "[SMS RECEIVED]");
@@ -130,14 +138,14 @@ droidEvent.addSmsListener(new ISmsListener() {
 });
 ```
 
-<h3>Incoming call/hook-off event listener</h3>
+## Incoming call/hook-off
 
 ```
 import fr.bmartel.droidphoneevent.listener.IPhoneCallListener;
 
 .......
 
-droidEvent.addPhoneCallListener(new IPhoneCallListener() {
+eventManager.addPhoneCallListener(new IPhoneCallListener() {
     @Override
     public void onIncomingCall(String phoneNumber) {
         Log.i(TAG, "[INCOMING CALL]");
@@ -150,14 +158,14 @@ droidEvent.addPhoneCallListener(new IPhoneCallListener() {
 });
 ```
 
-<h3>screen state change event listener</h3>
+## screen state
 
 ```
 import fr.bmartel.droidphoneevent.listener.IScreenStateListener;
 
 .......
 
-droidEvent.addScreenStateListener(new IScreenStateListener() {
+eventManager.addScreenStateListener(new IScreenStateListener() {
     @Override
     public void onScreenOn() {
         Log.i(TAG, "[SCREEN ON]");
@@ -169,45 +177,76 @@ droidEvent.addScreenStateListener(new IScreenStateListener() {
     }
 });
 ```
-<h3>close all listeners / unregister library objects</h3>
+
+## Connectivity state
+
+```
+import fr.bmartel.droidphoneevent.listener.IConnectivityListener;
+
+.......
+
+eventManager.addConnectivityChangeListener(new IConnectivityListener() {
+
+    @Override
+    public void onWifiStateChange(NetworkInfo.State formerState, NetworkInfo.State newState) {
+        Log.i(TAG,[WIFI STATE CHANGE] from state " + formerState + " to " + newState);
+    }
+
+    @Override
+    public void onEthernetStateChange(NetworkInfo.State formerState, NetworkInfo.State newState) {
+        Log.i(TAG,[ETHERNET STATE CHANGE] from state " + formerState + " to " + newState);
+    }
+});
+```
+
+## close all listeners / unregister receivers
 
 In your onDestroy() you have to call the close() method
 ```
 @Override
 public void onDestroy() {
 	super.onDestroy();
-	droidEvent.close();
+	eventManager.close();
 }
 ```
 
-You can remove a single listener : ``droidEvent.removeListeners(listener)``
+You can remove a single listener : ``eventManager.removeListeners(listener)``
 
-Or remove all listener you have created :  ``droidEvent.removeAllListeners()``
+Or remove all listener you have created :  ``eventManager.removeAllListeners()``
 
-<hr/>
-
-<h3>Access raw value directly</h3>
+## Access raw value directly
 
 You may want to have raw value at a precise time. 
 
-You can access all volume state type value :
+* access all volume state type value :
 
 ```
-Log.i(TAG, "Media volume        : " + droidEvent.getMediaVolume());
-Log.i(TAG, "System volume       : " + droidEvent.getSystemVolume());
-Log.i(TAG, "Ring volume         : " + droidEvent.getRingVolume());
-Log.i(TAG, "Notification volume : " + droidEvent.getNotificationVolume());
-Log.i(TAG, "DTMF volume         : " + droidEvent.getDtmfVolume());
-Log.i(TAG, "Voice call volume   : " + droidEvent.getVoiceCallVolume());
+Log.i(TAG, "Media volume        : " + eventManager.getMediaVolume());
+Log.i(TAG, "System volume       : " + eventManager.getSystemVolume());
+Log.i(TAG, "Ring volume         : " + eventManager.getRingVolume());
+Log.i(TAG, "Notification volume : " + eventManager.getNotificationVolume());
+Log.i(TAG, "DTMF volume         : " + eventManager.getDtmfVolume());
+Log.i(TAG, "Voice call volume   : " + eventManager.getVoiceCallVolume());
 ```
 
-You can access screen state value :
+* access screen state value :
 
 ```
-Log.i(TAG, "Screen state        : " + droidEvent.getScreenState());
+Log.i(TAG, "Screen state        : " + eventManager.getScreenState());
 ```
 
-<hr/>
+* access Wifi connectivity state :
 
-Tested on :
-* Galaxy S4 (4.4)
+```
+Log.i(TAG, "Wifi state          : " + eventManager.getWifiState());
+```
+
+* access Ethernet connectivity state :
+
+```
+Log.i(TAG, "Ethernet state      : " + eventManager.getEthernetState());
+```
+
+## License
+
+The MIT License (MIT) Copyright (c) 2015 Bertrand Martel
