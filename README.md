@@ -28,17 +28,7 @@ You can also access current value for specific properties :
 Grab from Bintray maven repository :
 
 ```
-repositories {
-    maven {
-        url 'https://dl.bintray.com/akinaru/maven/'
-    }
-}
- 
-...
- 
-dependencies {
-    compile 'akinaru:multi-event-library:0.2'
-}
+compile 'akinaru:multi-event-library:0.2'
 ```
 
 ## How to use ?
