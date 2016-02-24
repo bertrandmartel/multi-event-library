@@ -26,7 +26,7 @@ publish {
     userOrg = 'akinaru'
     groupId = 'akinaru'
     artifactId = 'multi-event-library'
-    publishVersion = '0.2'
+    publishVersion = '0.3'
     desc = 'Multi Event Library Release'
     website = 'https://github.com/akinaru/multi-event-library'
 }
