@@ -191,12 +191,12 @@ eventManager.addConnectivityChangeListener(new IConnectivityListener() {
 
     @Override
     public void onWifiStateChange(NetworkInfo.State formerState, NetworkInfo.State newState) {
-        Log.i(TAG,[WIFI STATE CHANGE] from state " + formerState + " to " + newState);
+        Log.i(TAG,"[WIFI STATE CHANGE] from state " + formerState + " to " + newState);
     }
 
     @Override
     public void onEthernetStateChange(NetworkInfo.State formerState, NetworkInfo.State newState) {
-        Log.i(TAG,[ETHERNET STATE CHANGE] from state " + formerState + " to " + newState);
+        Log.i(TAG,"[ETHERNET STATE CHANGE] from state " + formerState + " to " + newState);
     }
 });
 ```
