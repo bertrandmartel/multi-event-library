@@ -26,6 +26,7 @@ package fr.bmartel.android.multievent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
@@ -95,12 +96,16 @@ public class MultiEvent {
             //register content observer
             context.getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, audioObserver);
 
-            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (telephonyManager != null) {
-                PhoneListener PhoneListener = new PhoneListener(this);
-                telephonyManager.listen(PhoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+            if (checkReadPhoneStatePermission(context, "android.permission.READ_PHONE_STATE")) {
+                TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                if (telephonyManager != null) {
+                    PhoneListener PhoneListener = new PhoneListener(this);
+                    telephonyManager.listen(PhoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+                } else {
+                    Log.e(TAG, "Telephony manager service is not available");
+                }
             } else {
-                Log.e(TAG, "Telephony manager service is not available");
+                Log.w(TAG, "permission android.permission.READ_PHONE_STATE has not been granted. TELEPHONY_SERVICE is not summonned");
             }
 
             eventReceiver = new EventReceiver(this);
@@ -157,6 +162,18 @@ public class MultiEvent {
 
     public void addConnectivityChangeListener(IConnectivityListener listener) {
         connectivityListenerList.add(listener);
+    }
+
+    /**
+     * Check if a specific permission has been granted
+     *
+     * @param context    android context
+     * @param permission permission name
+     * @return
+     */
+    private boolean checkReadPhoneStatePermission(Context context, String permission) {
+        int res = context.checkCallingOrSelfPermission(permission);
+        return (res == PackageManager.PERMISSION_GRANTED);
     }
 
     public void addSmsListener(ISmsListener listener) {
