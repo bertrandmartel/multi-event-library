@@ -23,12 +23,16 @@ You can also access current value for specific properties :
 * curent wifi state value
 * current ethernet state value
 
+## Compatibility
+
+For Android 1.0+ except for the `isScreenOn()` only accessible from Android 2.1+ but notification can be received anyway
+
 ## Include in your project
 
 Grab from Bintray maven repository :
 
 ```
-compile 'akinaru:multi-event-library:0.3'
+compile 'akinaru:multi-event-library:0.31'
 ```
 
 ## How to use ?
