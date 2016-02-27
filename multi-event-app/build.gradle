@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "fr.bmartel.droidphoneevent.app"
-        minSdkVersion 17
+        minSdkVersion 7
         targetSdkVersion 22
         versionCode 1
         versionName "0.2"
@@ -22,5 +22,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //compile project(':multi-event-lib')
-    compile 'akinaru:multi-event-library:0.3'
+    compile 'akinaru:multi-event-library:0.31'
 }

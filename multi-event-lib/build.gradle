@@ -6,10 +6,10 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        minSdkVersion 17
+        minSdkVersion 1
         targetSdkVersion 22
         versionCode 1
-        versionName "0.2"
+        versionName "0.31"
     }
     buildTypes {
         release {
@@ -26,7 +26,7 @@ publish {
     userOrg = 'akinaru'
     groupId = 'akinaru'
     artifactId = 'multi-event-library'
-    publishVersion = '0.3'
+    publishVersion = '0.31'
     desc = 'Multi Event Library Release'
     website = 'https://github.com/akinaru/multi-event-library'
 }

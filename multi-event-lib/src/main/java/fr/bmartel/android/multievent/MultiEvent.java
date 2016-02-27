@@ -23,12 +23,14 @@
  */
 package fr.bmartel.android.multievent;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.telephony.PhoneStateListener;
@@ -298,10 +300,11 @@ public class MultiEvent {
             return 0;
     }
 
+    @TargetApi(Build.VERSION_CODES.ECLAIR_MR1)
     public boolean getScreenState() {
-        if (powerManager != null)
+        if (powerManager != null && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_MR1)) {
             return powerManager.isScreenOn();
-        else
+        } else
             return false;
     }
 
