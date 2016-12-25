@@ -1,7 +1,7 @@
 # Multi Event library #
 
-[![Build Status](https://travis-ci.org/akinaru/multi-event-library.svg)](https://travis-ci.org/akinaru/multi-event-library)
-[![Download](https://api.bintray.com/packages/akinaru/maven/multi-event-library/images/download.svg) ](https://bintray.com/akinaru/maven/multi-event-library/_latestVersion)
+[![Build Status](https://travis-ci.org/bertrandmartel/multi-event-library.svg)](https://travis-ci.org/bertrandmartel/multi-event-library)
+[![Download](https://api.bintray.com/packages/bertrandmartel/maven/multi-event-library/images/download.svg) ](https://bintray.com/bertrandmartel/maven/multi-event-library/_latestVersion)
 [![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
 <hr/>
@@ -32,7 +32,7 @@ For Android 1.0+ except for the `isScreenOn()` only accessible from Android 2.1+
 Grab from Bintray maven repository :
 
 ```
-compile 'akinaru:multi-event-library:0.31'
+compile 'fr.bmartel:multi-event-library:0.31'
 ```
 
 ## How to use ?

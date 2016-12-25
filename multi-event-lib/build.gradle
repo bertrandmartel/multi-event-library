@@ -23,10 +23,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 publish {
-    userOrg = 'akinaru'
-    groupId = 'akinaru'
+    userOrg = 'bertrandmartel'
+    groupId = 'bertrandmartel'
     artifactId = 'multi-event-library'
     publishVersion = '0.31'
     desc = 'Multi Event Library Release'
-    website = 'https://github.com/akinaru/multi-event-library'
+    website = 'https://github.com/bertrandmartel/multi-event-library'
 }
