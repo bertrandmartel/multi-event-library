@@ -21,6 +21,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    //compile project(':multi-event-lib')
-    compile 'fr.bmartel:multi-event-library:0.31'
+    compile project(':multi-event-lib')
+    //compile 'fr.bmartel:multi-event-library:0.31'
 }
