@@ -1,7 +1,7 @@
 # Multi Event library #
 
 [![Build Status](https://travis-ci.org/bertrandmartel/multi-event-library.svg)](https://travis-ci.org/bertrandmartel/multi-event-library)
-[![Download](https://api.bintray.com/packages/bertrandmartel/maven/multi-event-lib/images/download.svg) ](https://bintray.com/bertrandmartel/maven/multi-event-lib/_latestVersion)
+[![Download](https://api.bintray.com/packages/bertrandmartel/maven/multi-event-library/images/download.svg) ](https://bintray.com/bertrandmartel/maven/multi-event-library/_latestVersion)
 [![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
 <hr/>
