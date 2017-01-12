@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/bertrandmartel/multi-event-library.svg)](https://travis-ci.org/bertrandmartel/multi-event-library)
 [![Download](https://api.bintray.com/packages/bertrandmartel/maven/multi-event-library/images/download.svg) ](https://bintray.com/bertrandmartel/maven/multi-event-library/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.bmartel/multi-event-lib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.bmartel/multi-event-lib)
+[![Javadoc](http://javadoc-badge.appspot.com/fr.bmartel/multi-event-lib.svg?label=javadoc)](http://javadoc-badge.appspot.com/fr.bmartel/multi-event-lib)
 [![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
 <hr/>
