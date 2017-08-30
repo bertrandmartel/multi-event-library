@@ -1,12 +1,10 @@
 # Multi Event library #
 
 [![Build Status](https://travis-ci.org/bertrandmartel/multi-event-library.svg?branch=master)](https://travis-ci.org/bertrandmartel/multi-event-library)
-[![Download](https://api.bintray.com/packages/akinaru/maven/multi-event-library/images/download.svg) ](https://bintray.com/akinaru/maven/multi-event-library/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/bertrandmartel/maven/multi-event-library/images/download.svg) ](https://bintray.com/bertrandmartel/maven/multi-event-library/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.bmartel/multi-event-library/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.bmartel/multi-event-library)
 [![Javadoc](http://javadoc-badge.appspot.com/fr.bmartel/multi-event-library.svg?label=javadoc)](http://javadoc-badge.appspot.com/fr.bmartel/multi-event-library)
 [![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
-
-<hr/>
 
 Small Android library to catch a range of event type on Android devices via listeners :
 
@@ -34,15 +32,15 @@ For Android 1.0+ except for the `isScreenOn()` only accessible from Android 2.1+
 
 Grab from Bintray maven repository :
 
-```
-compile 'akinaru:multi-event-library:0.32'
+```groovy
+compile 'akinaru:multi-event-library:0.33'
 ```
 
 ## How to use ?
 
 First initialize `MultiEvent` object with your application context :
 
-```
+```java
 import fr.bmartel.android.multievent.MultiEvent;
 
 .......
@@ -66,7 +64,7 @@ According to which event you want to track, you may need some Android permission
 
 ### System volume
 
-```
+```java
 eventManager.addSystemVolumeListener(new IVolumeListener() {
     @Override
     public void onVolume(byte oldVolume, byte newVolume) {
@@ -77,7 +75,7 @@ eventManager.addSystemVolumeListener(new IVolumeListener() {
 
 ### Media volume
 
-```
+```java
 eventManager.addMediaVolumeListener(new IVolumeListener() {
     @Override
     public void onVolume(byte oldVolume, byte newVolume) {
@@ -88,7 +86,7 @@ eventManager.addMediaVolumeListener(new IVolumeListener() {
 
 ### DTMF volume
 
-```
+```java
 eventManager.addDtmfVolumeListener(new IVolumeListener() {
     @Override
     public void onVolume(byte oldVolume, byte newVolume) {
@@ -99,7 +97,7 @@ eventManager.addDtmfVolumeListener(new IVolumeListener() {
 
 ### Notification volume
 
-```
+```java
 eventManager.addNotificationVolumeListener(new IVolumeListener() {
 	@Override
 	public void onVolume(byte oldVolume, byte newVolume) {
@@ -110,7 +108,7 @@ eventManager.addNotificationVolumeListener(new IVolumeListener() {
 
 ### Ring volume
 
-```
+```java
 eventManager.addRingVolumeListener(new IVolumeListener() {
 	@Override
 	public void onVolume(byte oldVolume, byte newVolume) {
@@ -121,7 +119,7 @@ eventManager.addRingVolumeListener(new IVolumeListener() {
 
 ### Voice call volume
 
-```
+```java
 eventManager.addVoiceCallVolumeListener(new IVolumeListener() {
 	@Override
 	public void onVolume(byte oldVolume, byte newVolume) {
@@ -134,7 +132,7 @@ With respective import : ``import fr.bmartel.android.multievent.listener.IVolume
 
 ## SMS reception
 
-```
+```java
 import fr.bmartel.android.multievent.listener.ISmsListener;
 
 .......
@@ -149,7 +147,7 @@ eventManager.addSmsListener(new ISmsListener() {
 
 ## Incoming call/hook-off
 
-```
+```java
 import fr.bmartel.android.multievent.listener.IPhoneCallListener;
 
 .......
@@ -169,7 +167,7 @@ eventManager.addPhoneCallListener(new IPhoneCallListener() {
 
 ## Screen state
 
-```
+```java
 import fr.bmartel.android.multievent.listener.IScreenStateListener;
 
 .......
@@ -189,7 +187,7 @@ eventManager.addScreenStateListener(new IScreenStateListener() {
 
 ## Connectivity state
 
-```
+```java
 import fr.bmartel.android.multievent.listener.IConnectivityListener;
 
 .......
@@ -211,7 +209,8 @@ eventManager.addConnectivityChangeListener(new IConnectivityListener() {
 ## Close all listeners / unregister receivers
 
 In your onDestroy() you have to call the close() method
-```
+
+```java
 @Override
 public void onDestroy() {
 	super.onDestroy();
@@ -229,18 +228,18 @@ You may want to have raw value at a precise time.
 
 * access all volume value in % :
 
-```
-Log.i(TAG, "Media volume        : " + eventManager.getMediaVolume());
-Log.i(TAG, "System volume       : " + eventManager.getSystemVolume());
-Log.i(TAG, "Ring volume         : " + eventManager.getRingVolume());
-Log.i(TAG, "Notification volume : " + eventManager.getNotificationVolume());
-Log.i(TAG, "DTMF volume         : " + eventManager.getDtmfVolume());
-Log.i(TAG, "Voice call volume   : " + eventManager.getVoiceCallVolume());
+```java
+Log.v(TAG, "Media volume        : " + eventManager.getMediaVolume());
+Log.v(TAG, "System volume       : " + eventManager.getSystemVolume());
+Log.v(TAG, "Ring volume         : " + eventManager.getRingVolume());
+Log.v(TAG, "Notification volume : " + eventManager.getNotificationVolume());
+Log.v(TAG, "DTMF volume         : " + eventManager.getDtmfVolume());
+Log.v(TAG, "Voice call volume   : " + eventManager.getVoiceCallVolume());
 ```
 
 * mute volume :
 
-```
+```java
 eventManager.muteMedia(true);
 eventManager.muteSystem(true);
 eventManager.muteAlarm(true);
@@ -249,20 +248,20 @@ eventManager.muteRing(true);
 
 * access screen state value :
 
-```
-Log.i(TAG, "Screen state        : " + eventManager.getScreenState());
+```java
+Log.v(TAG, "Screen state        : " + eventManager.getScreenState());
 ```
 
 * access Wifi connectivity state :
 
-```
-Log.i(TAG, "Wifi state          : " + eventManager.getWifiState());
+```java
+Log.v(TAG, "Wifi state          : " + eventManager.getWifiState());
 ```
 
 * access Ethernet connectivity state :
 
-```
-Log.i(TAG, "Ethernet state      : " + eventManager.getEthernetState());
+```java
+Log.v(TAG, "Ethernet state      : " + eventManager.getEthernetState());
 ```
 
 ## License
