@@ -1,1 +1,1 @@
-include ':multi-event-lib', ':multi-event-app'
+include ':multi-event-library', ':multi-event-app'
