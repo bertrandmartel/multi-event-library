@@ -24,9 +24,12 @@
 package fr.bmartel.android.multievent;
 
 import android.app.Activity;
+import android.media.AudioManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import fr.bmartel.android.multievent.listener.IConnectivityListener;
@@ -34,6 +37,7 @@ import fr.bmartel.android.multievent.listener.IPhoneCallListener;
 import fr.bmartel.android.multievent.listener.IScreenStateListener;
 import fr.bmartel.android.multievent.listener.ISmsListener;
 import fr.bmartel.android.multievent.listener.IVolumeListener;
+import fr.bmartel.phone_event_app.R;
 
 
 public class DroidEventActivity extends Activity {
@@ -45,6 +49,8 @@ public class DroidEventActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_droid_event);
 
         droidEvent = new MultiEvent(this);
 
@@ -131,21 +137,36 @@ public class DroidEventActivity extends Activity {
         });
 
         Log.i(TAG, "Current states");
-        Log.i(TAG, "Media volume        : " + droidEvent.getMediaVolume());
-        Log.i(TAG, "System volume       : " + droidEvent.getSystemVolume());
-        Log.i(TAG, "Ring volume         : " + droidEvent.getRingVolume());
-        Log.i(TAG, "Notification volume : " + droidEvent.getNotificationVolume());
-        Log.i(TAG, "DTMF volume         : " + droidEvent.getDtmfVolume());
-        Log.i(TAG, "Voice call volume   : " + droidEvent.getVoiceCallVolume());
+        Log.i(TAG, "Media volume        : " + droidEvent.getVolume(AudioManager.STREAM_MUSIC));
+        Log.i(TAG, "System volume       : " + droidEvent.getVolume(AudioManager.STREAM_SYSTEM));
+        Log.i(TAG, "Ring volume         : " + droidEvent.getVolume(AudioManager.STREAM_RING));
+        Log.i(TAG, "Notification volume : " + droidEvent.getVolume(AudioManager.STREAM_NOTIFICATION));
+        Log.i(TAG, "DTMF volume         : " + droidEvent.getVolume(AudioManager.STREAM_DTMF));
+        Log.i(TAG, "Voice call volume   : " + droidEvent.getVolume(AudioManager.STREAM_VOICE_CALL));
         Log.i(TAG, "Screen state        : " + droidEvent.getScreenState());
         Log.i(TAG, "Wifi state          : " + droidEvent.getWifiState());
         Log.i(TAG, "Ethernet state      : " + droidEvent.getEthernetState());
+
+        Button buttonUp = (Button) findViewById(R.id.volume_up);
+        buttonUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                droidEvent.volumeUp(AudioManager.STREAM_MUSIC);
+            }
+        });
+
+        Button buttonDown = (Button) findViewById(R.id.volume_down);
+        buttonDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                droidEvent.volumeDown(AudioManager.STREAM_MUSIC);
+            }
+        });
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i(TAG, "onDestroy()");
         droidEvent.close();
     }
 }

@@ -261,68 +261,28 @@ public class MultiEvent {
         return audioManager;
     }
 
-    public int getMediaVolume() {
+    public int getVolume(int type) {
         if (audioManager != null)
-            return audioObserver.getVolumeMedia();
+            return audioObserver.getVolume(type);
         else
             return 0;
     }
 
-    public int getSystemVolume() {
+    public void mute(int type, boolean state) {
         if (audioManager != null)
-            return audioObserver.getVolumeSystem();
-        else
-            return 0;
+            audioObserver.mute(type, state);
     }
 
-    public int getRingVolume() {
+    public void volumeUp(int type) {
         if (audioManager != null)
-            return audioObserver.getVolumeRing();
-        else
-            return 0;
+            audioObserver.volumeUp(type);
     }
 
-    public int getNotificationVolume() {
+    public void volumeDown(int type) {
         if (audioManager != null)
-            return audioObserver.getVolumeNotification();
-        else
-            return 0;
+            audioObserver.volumeDown(type);
     }
 
-    public int getVoiceCallVolume() {
-        if (audioManager != null)
-            return audioObserver.getVolumeVoiceCall();
-        else
-            return 0;
-    }
-
-    public int getDtmfVolume() {
-        if (audioManager != null)
-            return audioObserver.getVolumeDtmf();
-        else
-            return 0;
-    }
-
-    public void muteMedia(boolean state) {
-        if (audioManager != null)
-            audioObserver.muteMedia(state);
-    }
-
-    public void muteSystem(boolean state) {
-        if (audioManager != null)
-            audioObserver.muteSystem(state);
-    }
-
-    public void muteAlarm(boolean state) {
-        if (audioManager != null)
-            audioObserver.muteAlarm(state);
-    }
-
-    public void muteRing(boolean state) {
-        if (audioManager != null)
-            audioObserver.muteRing(state);
-    }
-    
     @TargetApi(Build.VERSION_CODES.ECLAIR_MR1)
     public boolean getScreenState() {
         if (powerManager != null && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_MR1)) {

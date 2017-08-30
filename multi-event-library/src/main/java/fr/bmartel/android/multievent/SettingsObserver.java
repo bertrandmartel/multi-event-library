@@ -145,7 +145,6 @@ public class SettingsObserver extends ContentObserver {
                 }
             }
         }
-
         oldVolumeMedia = (byte) audio.getStreamVolume(AudioManager.STREAM_MUSIC);
         oldVolumeSystem = (byte) audio.getStreamVolume(AudioManager.STREAM_SYSTEM);
         oldVolumeRing = (byte) audio.getStreamVolume(AudioManager.STREAM_RING);
@@ -154,43 +153,19 @@ public class SettingsObserver extends ContentObserver {
         oldVolumeVoiceCall = (byte) audio.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
     }
 
-    public int getVolumeMedia() {
-        return (manager.getAudioManager().getStreamVolume(AudioManager.STREAM_MUSIC) * 100 / maxVolumeMedia);
+    public int getVolume(int type) {
+        return (manager.getAudioManager().getStreamVolume(type) * 100 / manager.getAudioManager().getStreamMaxVolume(type));
     }
 
-    public int getVolumeSystem() {
-        return (manager.getAudioManager().getStreamVolume(AudioManager.STREAM_SYSTEM) * 100 / maxVolumeSystem);
+    public void mute(int type, boolean state) {
+        manager.getAudioManager().setStreamMute(type, state);
     }
 
-    public int getVolumeRing() {
-        return (manager.getAudioManager().getStreamVolume(AudioManager.STREAM_RING) * 100 / maxVolumeRing);
+    public void volumeUp(int type) {
+        manager.getAudioManager().adjustStreamVolume(type, AudioManager.ADJUST_RAISE, AudioManager.FLAG_SHOW_UI);
     }
 
-    public int getVolumeNotification() {
-        return (manager.getAudioManager().getStreamVolume(AudioManager.STREAM_NOTIFICATION) * 100 / maxVolumeNotification);
-    }
-
-    public int getVolumeDtmf() {
-        return (manager.getAudioManager().getStreamVolume(AudioManager.STREAM_DTMF) * 100 / maxVolumeDtmf);
-    }
-
-    public int getVolumeVoiceCall() {
-        return (manager.getAudioManager().getStreamVolume(AudioManager.STREAM_VOICE_CALL) * 100 / maxVolumeVoiceCall);
-    }
-
-    public void muteMedia(boolean state) {
-        manager.getAudioManager().setStreamMute(AudioManager.STREAM_MUSIC, state);
-    }
-
-    public void muteAlarm(boolean state) {
-        manager.getAudioManager().setStreamMute(AudioManager.STREAM_ALARM, state);
-    }
-
-    public void muteRing(boolean state) {
-        manager.getAudioManager().setStreamMute(AudioManager.STREAM_RING, state);
-    }
-
-    public void muteSystem(boolean state) {
-        manager.getAudioManager().setStreamMute(AudioManager.STREAM_SYSTEM, state);
+    public void volumeDown(int type) {
+        manager.getAudioManager().adjustStreamVolume(type, AudioManager.ADJUST_LOWER, AudioManager.FLAG_SHOW_UI);
     }
 }
