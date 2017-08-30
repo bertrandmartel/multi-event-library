@@ -3,8 +3,8 @@
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
+build/
+build/
 /build
-/multi-event-app/build
-/multi-event-lib/build
 *.iml
 /.idea/dbnavigator.xml
