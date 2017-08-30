@@ -6,3 +6,5 @@
 /build
 /multi-event-app/build
 /multi-event-lib/build
+*.iml
+/.idea/dbnavigator.xml

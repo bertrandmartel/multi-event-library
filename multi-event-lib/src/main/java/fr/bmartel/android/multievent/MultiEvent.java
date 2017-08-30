@@ -257,49 +257,72 @@ public class MultiEvent {
         return smsListenerList;
     }
 
+    public AudioManager getAudioManager() {
+        return audioManager;
+    }
 
-    public byte getMediaVolume() {
+    public int getMediaVolume() {
         if (audioManager != null)
-            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            return audioObserver.getVolumeMedia();
         else
             return 0;
     }
 
-    public byte getSystemVolume() {
+    public int getSystemVolume() {
         if (audioManager != null)
-            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_SYSTEM);
+            return audioObserver.getVolumeSystem();
         else
             return 0;
     }
 
-    public byte getRingVolume() {
+    public int getRingVolume() {
         if (audioManager != null)
-            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_RING);
+            return audioObserver.getVolumeRing();
         else
             return 0;
     }
 
-    public byte getNotificationVolume() {
+    public int getNotificationVolume() {
         if (audioManager != null)
-            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
+            return audioObserver.getVolumeNotification();
         else
             return 0;
     }
 
-    public byte getVoiceCallVolume() {
+    public int getVoiceCallVolume() {
         if (audioManager != null)
-            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
+            return audioObserver.getVolumeVoiceCall();
         else
             return 0;
     }
 
-    public byte getDtmfVolume() {
+    public int getDtmfVolume() {
         if (audioManager != null)
-            return (byte) audioManager.getStreamVolume(AudioManager.STREAM_DTMF);
+            return audioObserver.getVolumeDtmf();
         else
             return 0;
     }
 
+    public void muteMedia(boolean state) {
+        if (audioManager != null)
+            audioObserver.muteMedia(state);
+    }
+
+    public void muteSystem(boolean state) {
+        if (audioManager != null)
+            audioObserver.muteSystem(state);
+    }
+
+    public void muteAlarm(boolean state) {
+        if (audioManager != null)
+            audioObserver.muteAlarm(state);
+    }
+
+    public void muteRing(boolean state) {
+        if (audioManager != null)
+            audioObserver.muteRing(state);
+    }
+    
     @TargetApi(Build.VERSION_CODES.ECLAIR_MR1)
     public boolean getScreenState() {
         if (powerManager != null && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_MR1)) {

@@ -3,13 +3,13 @@ apply plugin: 'bintray-release'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 1
         targetSdkVersion 22
         versionCode 1
-        versionName "0.31"
+        versionName "0.32"
     }
     buildTypes {
         release {

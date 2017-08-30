@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "fr.bmartel.droidphoneevent.app"
@@ -21,6 +21,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    //compile project(':multi-event-lib')
-    compile 'akinaru:multi-event-library:0.31'
+    compile project(':multi-event-lib')
 }
