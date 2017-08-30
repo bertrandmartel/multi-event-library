@@ -1,7 +1,9 @@
 # Multi Event library #
 
-[![Build Status](https://travis-ci.org/akinaru/multi-event-library.svg)](https://travis-ci.org/akinaru/multi-event-library)
+[![Build Status](https://travis-ci.org/bertrandmartel/multi-event-library.svg?branch=master)](https://travis-ci.org/bertrandmartel/multi-event-library)
 [![Download](https://api.bintray.com/packages/akinaru/maven/multi-event-library/images/download.svg) ](https://bintray.com/akinaru/maven/multi-event-library/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.bmartel/multi-event-library/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.bmartel/multi-event-library)
+[![Javadoc](http://javadoc-badge.appspot.com/fr.bmartel/multi-event-library.svg?label=javadoc)](http://javadoc-badge.appspot.com/fr.bmartel/multi-event-library)
 [![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
 <hr/>
@@ -19,6 +21,7 @@ Small Android library to catch a range of event type on Android devices via list
 You can also access current value for specific properties :
 
 * current value for volume media / System / Ring / DTMF / Voice call / Notification
+* mute volume
 * current screen state value
 * curent wifi state value
 * current ethernet state value
@@ -32,7 +35,7 @@ For Android 1.0+ except for the `isScreenOn()` only accessible from Android 2.1+
 Grab from Bintray maven repository :
 
 ```
-compile 'akinaru:multi-event-library:0.31'
+compile 'akinaru:multi-event-library:0.32'
 ```
 
 ## How to use ?
@@ -224,7 +227,7 @@ Or remove all listener you have created :  ``eventManager.removeAllListeners()``
 
 You may want to have raw value at a precise time. 
 
-* access all volume state type value :
+* access all volume value in % :
 
 ```
 Log.i(TAG, "Media volume        : " + eventManager.getMediaVolume());
@@ -233,6 +236,15 @@ Log.i(TAG, "Ring volume         : " + eventManager.getRingVolume());
 Log.i(TAG, "Notification volume : " + eventManager.getNotificationVolume());
 Log.i(TAG, "DTMF volume         : " + eventManager.getDtmfVolume());
 Log.i(TAG, "Voice call volume   : " + eventManager.getVoiceCallVolume());
+```
+
+* mute volume :
+
+```
+eventManager.muteMedia(true);
+eventManager.muteSystem(true);
+eventManager.muteAlarm(true);
+eventManager.muteRing(true);
 ```
 
 * access screen state value :
@@ -255,4 +267,4 @@ Log.i(TAG, "Ethernet state      : " + eventManager.getEthernetState());
 
 ## License
 
-The MIT License (MIT) Copyright (c) 2015 Bertrand Martel
+The MIT License (MIT) Copyright (c) 2015-2017 Bertrand Martel
