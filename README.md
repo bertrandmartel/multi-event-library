@@ -33,7 +33,7 @@ For Android 1.0+ except for the `isScreenOn()` only accessible from Android 2.1+
 Grab from Bintray maven repository :
 
 ```groovy
-compile 'akinaru:multi-event-library:0.33'
+compile 'akinaru:multi-event-library:0.35'
 ```
 
 ## How to use ?
