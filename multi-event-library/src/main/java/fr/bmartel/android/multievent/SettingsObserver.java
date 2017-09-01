@@ -26,6 +26,7 @@ package fr.bmartel.android.multievent;
 import android.content.Context;
 import android.database.ContentObserver;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Handler;
 
 /**
@@ -158,7 +159,24 @@ public class SettingsObserver extends ContentObserver {
     }
 
     public void mute(int type, boolean state) {
-        manager.getAudioManager().setStreamMute(type, state);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            manager.getAudioManager().adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, state ? AudioManager.ADJUST_MUTE : AudioManager.ADJUST_UNMUTE, AudioManager.FLAG_SHOW_UI);
+        } else {
+            manager.getAudioManager().setStreamMute(type, state);
+        }
+    }
+
+    public void setVolume(int type, int value) {
+        if (value < 0) {
+            value = 0;
+        } else if (value > 100) {
+            value = 100;
+        }
+        int vol = (value * manager.getAudioManager().getStreamMaxVolume(type)) / 100;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            vol = vol == 0 ? 1 : vol;
+        }
+        manager.getAudioManager().setStreamVolume(type, vol, AudioManager.FLAG_SHOW_UI);
     }
 
     public void volumeUp(int type) {

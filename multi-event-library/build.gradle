@@ -3,14 +3,14 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 25
     buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 1
-        targetSdkVersion 22
+        targetSdkVersion 25
         versionCode 1
-        versionName "0.33"
+        versionName "0.35"
     }
     buildTypes {
         release {
@@ -65,7 +65,7 @@ bintray {
             }
 
             mavenCentralSync {
-                sync = false
+                sync = true
                 //Optional (true by default). Determines whether to sync the version to Maven Central.
                 user = "$System.env.MAVEN_CENTRAL_USER_TOKEN" //OSS user token
                 password = "$System.env.MAVEN_CENTRAL_PASSWORD" //OSS user password

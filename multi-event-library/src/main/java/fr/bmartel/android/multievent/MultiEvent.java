@@ -283,6 +283,11 @@ public class MultiEvent {
             audioObserver.volumeDown(type);
     }
 
+    public void setVolume(int type, int value) {
+        if (audioManager != null)
+            audioObserver.setVolume(type, value);
+    }
+
     @TargetApi(Build.VERSION_CODES.ECLAIR_MR1)
     public boolean getScreenState() {
         if (powerManager != null && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_MR1)) {
